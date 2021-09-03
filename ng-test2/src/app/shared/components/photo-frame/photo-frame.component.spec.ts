@@ -1,11 +1,6 @@
-import { PhotoFrameModule } from './photo-frame.module';
-import {
-  ComponentFixture,
-  fakeAsync,
-  TestBed,
-  tick,
-} from '@angular/core/testing';
+import { ComponentFixture, fakeAsync, TestBed, tick } from '@angular/core/testing';
 import { PhotoFrameComponent } from './photo-frame.component';
+import { PhotoFrameModule } from './photo-frame.module';
 
 describe(PhotoFrameComponent.name, () => {
   let fixture: ComponentFixture<PhotoFrameComponent> = null;
@@ -13,7 +8,7 @@ describe(PhotoFrameComponent.name, () => {
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      imports: [PhotoFrameModule],
+      imports: [PhotoFrameModule]
     }).compileComponents();
 
     fixture = TestBed.createComponent(PhotoFrameComponent);
@@ -25,39 +20,39 @@ describe(PhotoFrameComponent.name, () => {
   });
 
   it(`#${PhotoFrameComponent.prototype.like.name}
-    Should trigger (@Output like) once when called multiple times within debounce time`, fakeAsync(() => {
-    fixture.detectChanges();
-    let times = 0;
-    component.liked.subscribe(() => times++);
-    component.like();
-    component.like();
-    tick(500);
-    expect(times).toBe(1);
+    should trigger (@Output liked) once when called
+    multiple times within debounce time`, fakeAsync(() => {
+      fixture.detectChanges();
+      let times = 0;
+      component.liked.subscribe(() => times++);
+      component.like();
+      component.like();
+      tick(500);
+      expect(times).toBe(1);
   }));
 
   it(`#${PhotoFrameComponent.prototype.like.name}
-    Should trigger (@Output liked) two times when called outside debounce time`, fakeAsync(() => {
-    fixture.detectChanges();
-    let times = 0;
-    component.liked.subscribe(() => times++);
-    component.like();
-    tick(500);
-    component.like();
-    tick(500);
-    expect(times).toBe(2);
-  }));
+    should trigger (@Output liked) two times when
+    called outside debounce time`, fakeAsync(() => {
+      fixture.detectChanges();
+      let times = 0;
+      component.liked.subscribe(() => times++);
+      component.like();
+      tick(500);
+      component.like();
+      tick(500);
+      expect(times).toBe(2);
+    }));
 
   it(`(D) Should display number of likes when (@Input likes) is incremented`, () => {
     fixture.detectChanges();
     component.likes++;
-    expect(component.likes).toBe(1);
     fixture.detectChanges();
-    const element: HTMLElement =
-      fixture.nativeElement.querySelector('.like-counter');
+    const element: HTMLElement = fixture.nativeElement.querySelector('.like-counter');
     expect(element.textContent.trim()).toBe('1');
   });
 
-  it(`(D) Should upadte aria-label when (@Input likes) is incremented`, () => {
+  it(`(D) Should update aria-label when (@Input likes) is incremented`, () => {
     fixture.detectChanges();
     component.likes++;
     fixture.detectChanges();
