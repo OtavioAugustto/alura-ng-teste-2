@@ -3,8 +3,9 @@
     <div class="col" *ngFor="let photo of cols">
       <app-photo-frame
         [src]="photo.url"
-        [description]="photo.description"
-      ></app-photo-frame>
+        [description]="photo.descripton"
+      >
+      </app-photo-frame>
     </div>
   </li>
 </ol>

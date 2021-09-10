@@ -4,7 +4,7 @@ import { ComponentFixture, TestBed } from '@angular/core/testing';
 
 import { Photo } from './interfaces/photo';
 import { PhotoBoardComponent } from './photo-board.component';
-import { PhotoBoardModule } from './photo-board.module';
+import { PhotoBoardmodule } from './photo-board.module';
 
 function buildPhotoList(): Photo[] {
   const photos: Photo[] = [];
@@ -25,7 +25,7 @@ describe(PhotoBoardComponent.name + ' outros', () => {
   beforeEach(async () => {
     await TestBed.configureTestingModule({
       declarations: [PhotoBoardTestComponent],
-      imports: [PhotoBoardModule]
+      imports: [PhotoBoardmodule]
     }).compileComponents();
 
     fixture = TestBed.createComponent(PhotoBoardTestComponent);
